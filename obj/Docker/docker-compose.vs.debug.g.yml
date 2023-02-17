@@ -12,19 +12,20 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages
     volumes:
-      - C:\Users\theod\workspace\dotnet\WebAPIExample\WebAPI:/app
-      - C:\Users\theod\workspace\dotnet\WebAPIExample:/src
-      - C:\Users\theod\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\theod\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Users\theo.delvas\workspace\dotnet_personal\microservice_webapiexample\WebAPI:/app
+      - C:\Users\theo.delvas\workspace\dotnet_personal\microservice_webapiexample:/src
+      - C:\Users\theo.delvas\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\theo.delvas\.nuget\packages\:/root/.nuget/packages:ro
+      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/net6.0/WebAPI.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  \"/app/bin/Debug/net6.0/WebAPI.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true

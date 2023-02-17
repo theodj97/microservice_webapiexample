@@ -1,11 +1,10 @@
 using Application.Common.Interfaces;
 using Application.Mapper;
 using AutoMapper;
-using MediatR;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Migrations.MigrationFactory;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+using Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +31,8 @@ var mapperConfing = new MapperConfiguration(mc =>
 IMapper mapper = mapperConfing.CreateMapper();
 // Singleton porque va a ser el mismo mapper para toda la aplicación
 builder.Services.AddSingleton(mapper);
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+//builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(CreateCategorieCommandHandler).Assembly);
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
@@ -43,6 +43,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// En Gestamp no se utilizan las migraciones, pero para estos ejemplos es útil
 var scoope = app.Services.CreateScope();
 MigrationFactory migration = new MigrationFactory(scoope.ServiceProvider);
 await migration.Migrate();

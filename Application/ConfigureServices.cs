@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MediatR;
 using System.Reflection;
+using MediatR;
+using Application.Features.Categories.Commands;
 
 namespace Application
 {
@@ -8,7 +9,7 @@ namespace Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            //services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             return services;
         }
     }

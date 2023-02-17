@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KCOSq3a862L6/xxHXB5mA/sSSiV/Ana6tqvRDM8TM61zu164/Cptt3UKiEPKXpdjlrxABWUbSHqMbBp+EPkUKg==",
+  "dgSpecHash": "yiwNBNeFKh7zf5pGiOmpmfjT06+lypAEWkqRpM4a4Yn9bnf9ypIDQTmIxAZL2FyLQ8rGGtvqf+yx3NeQS8Lt7g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\theod\\workspace\\dotnet\\WebAPIExample\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\theo.delvas\\workspace\\dotnet_personal\\microservice_webapiexample\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
